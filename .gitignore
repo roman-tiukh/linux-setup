@@ -1,0 +1,16 @@
+*.pyc
+*.log
+*.log.*
+*.dll
+*.lib
+*.exe
+# *.so
+*.pid
+.DS_Store
+/.idea/
+/.venv/
+/venv/
+/.vscode/
+__pycache__
+/__pycache__
+__pycache__/
