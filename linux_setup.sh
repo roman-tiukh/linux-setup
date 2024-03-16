@@ -37,28 +37,15 @@ bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xclip -selecti
 bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "xclip -in -selection clipboard"
 EOF
 
-cat <<EOF >> ~/.bashrc
-
-# tmux conf
-if [[ $TERM != "screen" ]]; then
-    tmux attach || tmux new
-fi
-EOF
-
-
 #### zsh ==================================
 sudo apt install -y zsh
 
 # oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-sed -i 's/ZSH_THEME=".*"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
+sed -i '1s/^/ZSH_TMUX_AUTOSTART=true\n/' ~/.zshrc
 sed -i 's/DISABLE_AUTO_TITLE=".*"/DISABLE_AUTO_TITLE="true"/g' ~/.zshrc
 sed -i 's/plugins=\(.*\)/plugins=\(git tmux yarn pip postgres docker docker-compose npm nvm systemd ubuntu\)/g' ~/.zshrc
 
 # powerlevel10k theme
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-source ~/.zshrc
-# p10k configure
-sed -i "s/typeset -g POWERLEVEL9K_TIME_FORMAT='.*'/typeset -g POWERLEVEL9K_TIME_FORMAT='%D\{%Y-%m-%d %H:%M\}'/g" ~/.p10k.zsh
-
-echo "exec zsh" >> ~/.bashrc
+sed -i 's/ZSH_THEME=".*"/ZSH_THEME="powerlevel10k\/powerlevel10k"/g' ~/.zshrc
