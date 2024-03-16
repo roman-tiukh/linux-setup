@@ -60,4 +60,5 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 source ~/.zshrc
 # p10k configure
 sed -i "s/typeset -g POWERLEVEL9K_TIME_FORMAT='.*'/typeset -g POWERLEVEL9K_TIME_FORMAT='%D\{%Y-%m-%d %H:%M\}'/g" ~/.p10k.zsh
-#echo "exec zsh" >> ~/.bashrc
+
+echo "exec zsh" >> ~/.bashrc
