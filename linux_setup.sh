@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 #### libraries ============================
 sudo apt install -y curl
 
